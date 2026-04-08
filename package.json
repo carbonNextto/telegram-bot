@@ -1,5 +1,5 @@
 {
-  "name": "telegram-bot",
+  "name": "openclaw-bot",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
