@@ -6,22 +6,18 @@ const bot = new TelegramBot(process.env.TELEGRAM_TOKEN, {
   polling: true
 });
 
+const OpenAI = require('openai');
+
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-bot.on('message', async (msg) => {
-  const chatId = msg.chat.id;
-  const userText = msg.text;
-
-  try {
-    const res = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        { role: "system", content: "คุณคือ AI สายขายของ ตอบเก่ง ปิดการขายได้" },
-        { role: "user", content: userText }
-      ]
-    });
+const res = await openai.chat.completions.create({
+  model: "gpt-4o-mini",
+  messages: [
+    { role: "user", content: "hello" }
+  ],
+});
 
     const reply = res.choices[0].message.content;
 
